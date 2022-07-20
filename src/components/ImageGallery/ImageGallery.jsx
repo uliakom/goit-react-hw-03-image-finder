@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { ImageContainer } from './ImageGallery.styled';
 import ImageGalleryItem from 'components/ImageGalleryItem';
 
-const ImageGallery = ({ images, onClick }) => {
+const ImageGallery = ({ images, onImageClick }) => {
   return (
     <ImageContainer>
       {images.map(({ id, webformatURL, tags, largeImageURL }) => (
@@ -10,7 +10,7 @@ const ImageGallery = ({ images, onClick }) => {
           key={id}
           src={webformatURL}
           alt={tags}
-          openModal={() => onClick(largeImageURL, tags)}
+          openModal={() => onImageClick(largeImageURL, tags)}
         />
       ))}
     </ImageContainer>
@@ -28,5 +28,5 @@ ImageGallery.propTypes = {
       largeImageURL: PropTypes.string.isRequired,
     })
   ),
-  onClick: PropTypes.func,
+  onImageClick: PropTypes.func,
 };

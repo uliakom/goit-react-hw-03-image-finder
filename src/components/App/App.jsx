@@ -29,7 +29,6 @@ class App extends Component {
           return { hits: [...prevState.hits, ...response], status: 'resolved' };
         });
         stopLoader();
-        console.log(response);
         if (response.length === 0) {
           Report.failure(
             'Search Failure',
@@ -40,8 +39,9 @@ class App extends Component {
         }
       } catch (error) {
         this.setState({ status: 'rejected' });
-        stopLoader();
         console.log(error);
+      } finally {
+        stopLoader();
       }
     }
   }
@@ -60,23 +60,23 @@ class App extends Component {
     this.setState({ largeUrl: null, tag: null });
   };
 
-  getUrl = (url, alt) => this.setState({ largeUrl: url, tag: alt });
+  openModal = (url, alt) => this.setState({ largeUrl: url, tag: alt });
 
   render() {
     const { hits, status, largeUrl, tag } = this.state;
-    const { handleLoadMore, handleSearch, onModalClose, getUrl } = this;
+    const { handleLoadMore, handleSearch, onModalClose, openModal } = this;
     return (
       <Container>
         <SearchBar onSubmit={handleSearch} />
         {status === 'pending' && startLoader()}
-        {status === 'resolved' && (
-          <ImageGallery images={hits} onClick={getUrl} />
+        {status === 'resolved' && hits.length > 0 && (
+          <>
+            <ImageGallery images={hits} onImageClick={openModal} />
+            <Button onClick={handleLoadMore} />
+          </>
         )}
         {status === 'rejected' && (
           <h2>Ups... Something went wrong. Please try again later.</h2>
-        )}
-        {status === 'resolved' && hits.length > 0 && (
-          <Button onClick={handleLoadMore} />
         )}
         {largeUrl && <Modal url={largeUrl} alt={tag} onClose={onModalClose} />}
       </Container>
