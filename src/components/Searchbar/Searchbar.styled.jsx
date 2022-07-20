@@ -53,6 +53,9 @@ export const Button = styled.button`
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   outline: none;
+  box-shadow: 28px 27px 9px -20px rgba(0,0,0,0.41) inset;
+-webkit-box-shadow: 28px 27px 9px -20px rgba(0,0,0,0.41) inset;
+-moz-box-shadow: 28px 27px 9px -20px rgba(0,0,0,0.41) inset;
   }
 
   &:hover {

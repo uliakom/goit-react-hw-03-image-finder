@@ -6,3 +6,7 @@ const Button = ({ onClick }) => {
 };
 
 export default Button;
+
+Button.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};

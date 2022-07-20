@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from './App.styled';
-import { Report, Block } from 'notiflix/build/notiflix-report-aio';
+import { Report } from 'notiflix/build/notiflix-report-aio';
 import { fetchImages } from 'services/api';
 import SearchBar from 'components/Searchbar/SearchBar';
 import ImageGallery from 'components/ImageGallery';
@@ -57,7 +57,6 @@ class App extends Component {
   };
 
   onModalClose = () => {
-    console.log('AAA');
     this.setState({ largeUrl: null, tag: null });
   };
 

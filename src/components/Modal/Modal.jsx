@@ -14,7 +14,7 @@ export default class Modal extends Component {
   componentDidMount() {
     window.addEventListener('keydown', this.handleEscClose);
   }
-  componentDidUnmount() {
+  componentWillUnmount() {
     window.removeEventListener('keydown', this.handleEscClose);
   }
 
@@ -32,7 +32,7 @@ export default class Modal extends Component {
 }
 
 Modal.propTypes = {
-  alt: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
+  alt: PropTypes.string,
+  src: PropTypes.string,
   onClose: PropTypes.func,
 };

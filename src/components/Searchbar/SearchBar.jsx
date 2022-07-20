@@ -36,7 +36,7 @@ class SearchBar extends Component {
             onChange={handleNameChange}
           />
           <Button type="submit">
-            <BsZoomIn />
+            <BsZoomIn size={25} />
           </Button>
         </SearchForm>
       </SearchBarHeader>
