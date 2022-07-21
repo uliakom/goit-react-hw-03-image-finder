@@ -71,7 +71,7 @@ class App extends Component {
         {status === 'pending' && startLoader()}
         {status === 'resolved' && hits.length > 0 && (
           <>
-            <ImageGallery images={hits} onImageClick={openModal} />
+            <ImageGallery images={hits} onOpenModal={openModal} />
             <Button onClick={handleLoadMore} />
           </>
         )}
